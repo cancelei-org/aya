@@ -1,0 +1,25 @@
+{
+  "name": "aya-mcp-server",
+  "description": "AYAハードウェア設計支援機能をModel Context Protocol (MCP)サーバーとして提供",
+  "version": "1.0.0",
+  "status": "requirements-generated",
+  "phase": "requirements-generated",
+  "progress": {
+    "requirements": 100,
+    "design": 0,
+    "tasks": 0
+  },
+  "phases": {
+    "requirements": false,
+    "design": false,
+    "tasks": false
+  },
+  "approvals": {
+    "requirements": {
+      "generated": true,
+      "approved": false
+    }
+  },
+  "created": "2025-08-02",
+  "updated": "2025-08-02"
+}

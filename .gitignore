@@ -1,0 +1,72 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/server/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files - never commit real secrets
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+/lib/generated/prisma
+
+# Debug and temporary files
+debug-*.js
+simple-*.js
+quick-check.js
+check-*.js
+*.backup
+
+# Log files
+*.log
+daily_commits.csv
+server.log
+build-errors*
+
+# Temporary directories
+temp-*/
+temp-template/
+
+# Test files
+test.ts
+*.test.backup
+
+.secrets

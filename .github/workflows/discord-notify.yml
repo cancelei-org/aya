@@ -1,0 +1,25 @@
+name: Notify Discord with embed
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  discord-notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send embed notification to Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{
+                 "embeds": [{
+                   "title": "🚀 New Push to Main",
+                   "description": "Repository: `${{ github.repository }}`\nPushed by: `${{ github.actor }}`",
+                   "color": 5814783,
+                   "timestamp": "'$(date --utc +%Y-%m-%dT%H:%M:%SZ)'"
+                 }]
+               }' \
+               ${{ secrets.DISCORD_WEBHOOK_URL }}

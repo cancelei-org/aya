@@ -1,0 +1,84 @@
+{
+  "version": "4.0.8",
+  "framework": "SuperClaude",
+  "features": {
+    "agents": true,
+    "commands": true,
+    "modes": true,
+    "mcp_servers": true
+  },
+  "modes": {
+    "default": "balanced",
+    "available": [
+      "brainstorming",
+      "orchestration",
+      "token_efficiency",
+      "deep_analysis",
+      "rapid_prototyping"
+    ],
+    "current": "deep_analysis"
+  },
+  "agents": {
+    "enabled": true,
+    "auto_dispatch": true,
+    "available": [
+      "architecture",
+      "code_analysis",
+      "testing",
+      "documentation",
+      "performance",
+      "security",
+      "database",
+      "frontend",
+      "backend",
+      "devops",
+      "integration",
+      "optimization",
+      "debugging",
+      "planning"
+    ]
+  },
+  "commands": {
+    "prefix": "/sc:",
+    "enabled": true
+  },
+  "mcp_servers": {
+    "context7": {
+      "enabled": false,
+      "path": null
+    },
+    "sequential": {
+      "enabled": false,
+      "path": null
+    },
+    "playwright": {
+      "enabled": false,
+      "path": null
+    },
+    "postgres": {
+      "enabled": false,
+      "path": null
+    },
+    "exa": {
+      "enabled": false,
+      "path": null
+    },
+    "filesystem": {
+      "enabled": false,
+      "path": null
+    }
+  },
+  "workflow": {
+    "systematic": true,
+    "phases": [
+      "understand",
+      "plan",
+      "execute",
+      "validate"
+    ]
+  },
+  "integration": {
+    "kiro_spec_driven": true,
+    "preserve_existing_workflow": true
+  }
+}

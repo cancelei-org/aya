@@ -1,0 +1,55 @@
+/* ポートの視覚的フィードバック */
+.react-flow__handle {
+  transition: all 0.2s ease;
+}
+
+/* ポートグループのスタイル */
+.port-group {
+  position: relative;
+}
+
+.port-group + .port-group {
+  margin-top: 15px;
+}
+
+/* ポートがホバーされた時の他のポートのスタイル */
+.react-flow__node:hover .react-flow__handle:not(:hover) {
+  opacity: 0.6;
+  transform: scale(0.9);
+}
+
+/* アクティブなポートの強調 */
+.react-flow__handle:hover {
+  transform: scale(1.5) !important;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3) !important;
+  z-index: 100 !important;
+}
+
+/* 接続中のアニメーション */
+.react-flow__handle.connecting {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+/* ポートラベルの改善 */
+.port-label {
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.react-flow__handle:hover + .port-label {
+  font-weight: 700;
+  transform: scale(1.1);
+}

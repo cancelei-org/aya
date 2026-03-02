@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "created_at": "2025-01-28",
+  "documents": [
+    {
+      "filename": "product.md",
+      "name": "Product Overview",
+      "description": "製品概要、コア機能、ターゲットユースケース、価値提案",
+      "inclusion": "always",
+      "tags": ["product", "features", "business"]
+    },
+    {
+      "filename": "tech.md", 
+      "name": "Technology Stack",
+      "description": "技術スタック、アーキテクチャ、開発環境、コマンド",
+      "inclusion": "always",
+      "tags": ["tech", "architecture", "development"]
+    },
+    {
+      "filename": "structure.md",
+      "name": "Project Structure", 
+      "description": "ディレクトリ構造、コード整理、命名規則、アーキテクチャ原則",
+      "inclusion": "always",
+      "tags": ["structure", "organization", "conventions"]
+    }
+  ],
+  "custom_documents": []
+}

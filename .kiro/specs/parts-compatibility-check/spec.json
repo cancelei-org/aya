@@ -1,0 +1,28 @@
+{
+  "feature_name": "parts-compatibility-check",
+  "project_description": "部品の互換性確認機能",
+  "created_at": "2025-07-22T11:43:00Z",
+  "updated_at": "2025-07-23T11:05:00Z",
+  "language": "japanese",
+  "phase": "ready-for-implementation",
+  "approvals": {
+    "requirements": {
+      "generated": true,
+      "approved": true
+    },
+    "design": {
+      "generated": true,
+      "approved": true
+    },
+    "tasks": {
+      "generated": true,
+      "approved": true
+    }
+  },
+  "progress": {
+    "requirements": 100,
+    "design": 100,
+    "tasks": 100
+  },
+  "ready_for_implementation": true
+}

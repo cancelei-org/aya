@@ -1,0 +1,24 @@
+{
+  "watch": [
+    "app/**/*",
+    "lib/**/*",
+    "components/**/*",
+    "utils/**/*",
+    "server/**/*"
+  ],
+  "ext": "js,ts,jsx,tsx,json",
+  "ignore": [
+    ".git",
+    "node_modules",
+    ".next",
+    "out",
+    "dist",
+    "build",
+    "*.test.js",
+    "*.spec.js"
+  ],
+  "exec": "next dev",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

@@ -1,0 +1,178 @@
+.
+├── [20250721].txt
+├── analysis_report.md
+├── app
+│   ├── auth
+│   │   └── signin
+│   ├── effects
+│   │   └── SyncEffects.tsx
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── handlers
+│   │   └── EventHandlers.tsx
+│   ├── layout
+│   │   └── AppLayout.tsx
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── providers
+│   │   └── StateProviders.tsx
+│   └── providers.tsx
+├── CLAUDE_CODE_CONFIG.json
+├── claude-code-spec
+│   ├── CLAUDE.md
+│   ├── docs
+│   │   ├── claude-code
+│   │   └── kiro
+│   └── README.md
+├── CLAUDE.md
+├── components
+│   ├── chat
+│   │   ├── ChatPanelLogic.tsx
+│   │   ├── ChatPanelState.tsx
+│   │   └── ChatPanelUI.tsx
+│   ├── ChatPanel.tsx
+│   ├── CompatibilityResultModal.tsx
+│   ├── DetectedLibrariesDisplay.tsx
+│   ├── DevLog.tsx
+│   ├── edges
+│   │   └── CustomEdge.tsx
+│   ├── FileUpload.tsx
+│   ├── LoadingScreen.tsx
+│   ├── MainCanvas.tsx
+│   ├── nodes
+│   │   ├── CategoryNode.tsx
+│   │   └── SystemNode.tsx
+│   ├── parts
+│   │   ├── PartsManagementLogic.tsx
+│   │   ├── PartsManagementState.tsx
+│   │   └── PartsManagementTable.tsx
+│   ├── PartsListFlow.tsx
+│   ├── PartsManagement.tsx
+│   ├── Sidebar.tsx
+│   ├── SignInPrompt.tsx
+│   ├── SoftwareContextPanel.tsx
+│   ├── SuggestionCard.tsx
+│   ├── SuggestionModal.tsx
+│   ├── SystemDiagramFlow.tsx
+│   ├── SystemRequirementsInput.tsx
+│   ├── TopBar.tsx
+│   ├── ui
+│   │   ├── badge.tsx
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── collapsible.tsx
+│   │   ├── dropdown-menu.tsx
+│   │   ├── input.tsx
+│   │   ├── select.tsx
+│   │   └── separator.tsx
+│   └── VisualInformation.tsx
+├── components.json
+├── eslint.config.mjs
+├── hooks
+│   ├── useAutoSave.ts
+│   ├── useCanvasManagement.ts
+│   ├── useChatManagement.ts
+│   ├── useHistoryManager.ts
+│   ├── useLLMState.ts
+│   ├── usePricingData.ts
+│   ├── useProjectManagement.ts
+│   ├── useSoftwareContext.ts
+│   ├── useSpatialCategorization.ts
+│   └── useUIState.ts
+├── lib
+│   ├── formspree.ts
+│   ├── prisma.ts
+│   └── utils.ts
+├── next.config.ts
+├── next-env.d.ts
+├── package.json
+├── package-lock.json
+├── pages
+│   ├── admin
+│   │   └── feedback.tsx
+│   ├── api
+│   │   ├── admin
+│   │   ├── analyze-parts.ts
+│   │   ├── auth
+│   │   ├── chat
+│   │   ├── chat.ts
+│   │   ├── debug
+│   │   ├── feedback
+│   │   ├── fetch-url.ts
+│   │   ├── projects
+│   │   ├── search-parts.ts
+│   │   ├── suggestions
+│   │   ├── upload.ts
+│   │   └── user
+│   ├── _app.tsx
+│   ├── auth
+│   └── upgrade.tsx
+├── postcss.config.mjs
+├── prisma
+│   ├── migrations
+│   │   └── 20250711_add_procurement_fields
+│   └── schema.prisma
+├── public
+│   ├── aya-logo.jpg
+│   ├── aya-logo.webp
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── uploads
+│   │   └── 1752447796507-test.png
+│   ├── vercel.svg
+│   └── window.svg
+├── quick-check.js
+├── railway.toml
+├── README.md
+├── RE_ENABLEMENT_SUMMARY.md
+├── scripts
+│   └── migrate.js
+├── server.log
+├── structure.txt
+├── tests
+│   ├── compatibility-test.js
+│   ├── data-persistence.test.js
+│   ├── setup.js
+│   └── teardown.js
+├── tsconfig.json
+├── tsconfig.tsbuildinfo
+├── types
+│   ├── api.ts
+│   ├── canvas.ts
+│   ├── chat.ts
+│   ├── compatibility.ts
+│   ├── index.ts
+│   ├── parts.ts
+│   ├── project.ts
+│   └── ui.ts
+└── utils
+    ├── alternativePartsFinder.ts
+    ├── chatUtils.ts
+    ├── compatibilityChecker.ts
+    ├── componentNaming.ts
+    ├── componentSuggestionExtractor.ts
+    ├── connectionMatching.ts
+    ├── connectionValidation.ts
+    ├── fileProcessing.ts
+    ├── flowUtils.ts
+    ├── githubLibraryAnalyzer.ts
+    ├── hardwareContext.ts
+    ├── intentClassifier.ts
+    ├── nodeOperations.ts
+    ├── octopartApi.ts
+    ├── parts
+    │   ├── partsAnalysisHandler.ts
+    │   ├── partsConnectionProcessor.ts
+    │   └── partsSearchHandler.ts
+    ├── partsAnalysis.ts
+    ├── partsExtractor.ts
+    ├── pbsComputed.ts
+    ├── pbsManagement.ts
+    ├── projectUtils-new.ts
+    ├── smartGrouping.ts
+    ├── softwareCompatibilityChecker.ts
+    ├── uiHelpers.ts
+    └── uiUtils.ts
+
+42 directories, 134 files

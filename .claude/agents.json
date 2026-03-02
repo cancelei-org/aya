@@ -1,0 +1,194 @@
+{
+  "version": "1.0.0",
+  "agents": {
+    "architecture": {
+      "name": "Architecture Agent",
+      "description": "System design, architecture patterns, and structural decisions",
+      "triggers": ["design", "architecture", "structure", "pattern", "system"],
+      "capabilities": [
+        "System design patterns",
+        "Microservices architecture",
+        "Monolithic to microservices migration",
+        "API design",
+        "Database schema design"
+      ]
+    },
+    "code_analysis": {
+      "name": "Code Analysis Agent",
+      "description": "Deep code investigation, complexity analysis, and refactoring",
+      "triggers": ["analyze", "investigate", "review", "refactor", "complexity"],
+      "capabilities": [
+        "Code complexity analysis",
+        "Dependency analysis",
+        "Dead code detection",
+        "Code smell identification",
+        "Refactoring recommendations"
+      ]
+    },
+    "testing": {
+      "name": "Testing Agent",
+      "description": "Test creation, validation, and coverage analysis",
+      "triggers": ["test", "spec", "coverage", "unit", "integration", "e2e"],
+      "capabilities": [
+        "Unit test generation",
+        "Integration test design",
+        "E2E test scenarios",
+        "Test coverage analysis",
+        "Test optimization"
+      ]
+    },
+    "documentation": {
+      "name": "Documentation Agent",
+      "description": "Documentation generation and maintenance",
+      "triggers": ["document", "docs", "readme", "api-docs", "comment"],
+      "capabilities": [
+        "API documentation",
+        "Code comments",
+        "README generation",
+        "Architecture diagrams",
+        "User guides"
+      ]
+    },
+    "performance": {
+      "name": "Performance Agent",
+      "description": "Performance optimization and bottleneck analysis",
+      "triggers": ["performance", "optimize", "speed", "bottleneck", "profile"],
+      "capabilities": [
+        "Performance profiling",
+        "Bottleneck identification",
+        "Query optimization",
+        "Caching strategies",
+        "Load testing"
+      ]
+    },
+    "security": {
+      "name": "Security Agent",
+      "description": "Security assessment and vulnerability detection",
+      "triggers": ["security", "vulnerability", "auth", "encryption", "audit"],
+      "capabilities": [
+        "Security audit",
+        "Vulnerability scanning",
+        "Authentication implementation",
+        "Encryption strategies",
+        "OWASP compliance"
+      ]
+    },
+    "database": {
+      "name": "Database Agent",
+      "description": "Database operations, optimization, and migrations",
+      "triggers": ["database", "sql", "migration", "schema", "query"],
+      "capabilities": [
+        "Schema design",
+        "Query optimization",
+        "Migration scripts",
+        "Index optimization",
+        "Data modeling"
+      ]
+    },
+    "frontend": {
+      "name": "Frontend Agent",
+      "description": "UI/UX implementation and frontend optimization",
+      "triggers": ["frontend", "ui", "ux", "component", "style", "react"],
+      "capabilities": [
+        "Component development",
+        "State management",
+        "CSS optimization",
+        "Responsive design",
+        "Accessibility"
+      ]
+    },
+    "backend": {
+      "name": "Backend Agent",
+      "description": "Server-side logic and API development",
+      "triggers": ["backend", "api", "server", "endpoint", "middleware"],
+      "capabilities": [
+        "API development",
+        "Middleware implementation",
+        "Authentication/Authorization",
+        "Data processing",
+        "Queue management"
+      ]
+    },
+    "devops": {
+      "name": "DevOps Agent",
+      "description": "Deployment, CI/CD, and infrastructure",
+      "triggers": ["deploy", "ci", "cd", "docker", "kubernetes", "infrastructure"],
+      "capabilities": [
+        "CI/CD pipeline",
+        "Docker configuration",
+        "Kubernetes deployment",
+        "Infrastructure as Code",
+        "Monitoring setup"
+      ]
+    },
+    "integration": {
+      "name": "Integration Agent",
+      "description": "Third-party integrations and API connections",
+      "triggers": ["integrate", "api-integration", "webhook", "third-party"],
+      "capabilities": [
+        "API integration",
+        "Webhook implementation",
+        "OAuth setup",
+        "Payment gateway integration",
+        "Service mesh configuration"
+      ]
+    },
+    "optimization": {
+      "name": "Optimization Agent",
+      "description": "Code and resource optimization",
+      "triggers": ["optimize", "efficiency", "resource", "memory", "cpu"],
+      "capabilities": [
+        "Code optimization",
+        "Memory management",
+        "CPU optimization",
+        "Bundle size reduction",
+        "Algorithm optimization"
+      ]
+    },
+    "debugging": {
+      "name": "Debugging Agent",
+      "description": "Issue investigation and debugging",
+      "triggers": ["debug", "bug", "issue", "error", "troubleshoot"],
+      "capabilities": [
+        "Error analysis",
+        "Stack trace investigation",
+        "Memory leak detection",
+        "Race condition identification",
+        "Debugging strategy"
+      ]
+    },
+    "planning": {
+      "name": "Planning Agent",
+      "description": "Project planning and task breakdown",
+      "triggers": ["plan", "roadmap", "timeline", "estimate", "milestone"],
+      "capabilities": [
+        "Project roadmap",
+        "Task breakdown",
+        "Time estimation",
+        "Risk assessment",
+        "Resource planning"
+      ]
+    }
+  },
+  "dispatch_rules": {
+    "auto_dispatch": true,
+    "parallel_threshold": 3,
+    "context_analysis": true,
+    "priority_order": [
+      "security",
+      "debugging",
+      "performance",
+      "testing",
+      "code_analysis",
+      "architecture",
+      "backend",
+      "frontend",
+      "database",
+      "documentation",
+      "devops",
+      "integration",
+      "optimization",
+      "planning"
+    ]
+  }
+}

@@ -1,0 +1,351 @@
+{
+  "project": {
+    "name": "ORBOH",
+    "core_concept": "AYA (AI-powered Hardware Assistant) - あらゆるハードウェア開発者の完全なデジタルパートナー",
+    "current_phase": "Phase 3: 統合完了 + 先進機能実装済み（ファイルアップロード・Undo/Redo・GitHub連携・プレミアム機能）",
+    "last_updated": "2025-07-15"
+  },
+  
+  "critical_constraints": {
+    "partOrders_status": "完全削除済み - 参照禁止",
+    "data_model": "canvasNodes統合データモデル",
+    "save_system": "自動保存システム（beforeunload/visibilitychange対応）",
+    "main_file_issue": "app/page.tsx が 842 lines で肥大化継続中（減少傾向だが依然超過）",
+    "hardware_scope": "ロボットアーム限定からハードウェア汎用へ拡張済み",
+    "compatibility_system": "電圧・通信・電力の自動互換性分析システム実装済み",
+    "file_upload_system": "multer + 画像・PDF・Excel対応実装済み",
+    "panel_layout_system": "react-resizable-panels による3パネル構成実装済み",
+    "premium_system": "チャット制限・プレミアム機能実装済み",
+    "file_bloat_crisis": "複数ファイルが200行制限を大幅超過（types/index.ts:396, MainCanvas.tsx:379, compatibilityChecker.ts:428）"
+  },
+  
+  "development_principles": {
+    "file_organization": {
+      "max_lines_per_file": 200,
+      "approach": "機能別分割必須",
+      "main_file_target": "app/page.tsx を 150 lines以内に削減",
+      "urgent_refactoring": {
+        "types/index.ts": "型定義を機能別ファイルに分割（components/, hooks/, utils/）",
+        "MainCanvas.tsx": "描画ロジック・イベントハンドラー・UI部分を分離",
+        "compatibilityChecker.ts": "分析エンジン・UI・ユーティリティに分割"
+      }
+    },
+    "problem_solving": {
+      "approach": "根本原因の特定・修正を優先",
+      "forbidden": "応急処置・try-catch隠蔽",
+      "required": "型安全性による事前エラー防止"
+    },
+    "algorithm_design": {
+      "preference": "O(n)処理優先、O(n²)回避",
+      "tools": "Map/Set活用による高速化",
+      "avoid": "複雑な条件分岐"
+    },
+    "code_cleanup": {
+      "unused_code": "即座に削除",
+      "deprecated_features": "完全削除",
+      "experimental_code": "コメントアウトのみ許可"
+    },
+    "commenting_standards": {
+      "function_comments": "関数一つあたり最低一文の説明を必須とする",
+      "approach": "機能・目的・引数・戻り値を簡潔に記述",
+      "format": "JSDoc形式推奨、ただし過度な詳細は避ける",
+      "required_for": "全ての関数、メソッド、カスタムフック",
+      "example": "// ユーザーセッション情報を取得し認証状態を返す"
+    },
+    "user_communication": {
+      "required": "修正前の理由説明必須",
+      "include": "影響範囲の明確化、具体的テスト方法",
+      "target": "プログラム初心者向け説明"
+    }
+  },
+  
+  "tech_stack": {
+    "frontend": {
+      "Next.js": "15.2.4",
+      "React": "19.0.0", 
+      "TypeScript": "5.x",
+      "TailwindCSS": "4.x",
+      "@xyflow/react": "12.8.1 (React Flow)",
+      "@radix-ui": "モダンUIコンポーネントライブラリ",
+      "react-resizable-panels": "3.0.3 (パネルリサイズ機能)",
+      "lucide-react": "0.525.0 (アイコン)",
+      "class-variance-authority": "0.7.1 (CSS variant管理)",
+      "tailwind-merge": "3.3.1 (Tailwindクラス最適化)"
+    },
+    "backend": {
+      "Next.js API Routes": "サーバーロジック",
+      "NextAuth.js": "認証システム",
+      "Prisma": "6.11.0 (ORM)",
+      "PostgreSQL": "メインデータベース"
+    },
+    "ai_integration": {
+      "OpenAI API": "5.8.2 - GPT-4 チャット機能",
+      "Puppeteer": "24.11.1 - Web scraping部品情報取得",
+      "puppeteer-extra": "3.3.6 - Puppeteer拡張",
+      "puppeteer-extra-plugin-stealth": "2.11.2 - ステルスモード"
+    },
+    "state_management": {
+      "approach": "Custom Hooks",
+      "location": "hooks/ ディレクトリ",
+      "external_libs": "未使用（Zustand/Redux未使用）"
+    },
+    "file_processing": {
+      "multer": "1.4.5-lts.1 - ファイルアップロード",
+      "xlsx": "0.18.5 - Excel処理"
+    },
+    "authentication": {
+      "NextAuth.js": "4.24.11",
+      "@next-auth/prisma-adapter": "1.0.7"
+    }
+  },
+  
+  "file_structure": {
+    "main_integration": {
+      "path": "app/page.tsx",
+      "lines": "842",
+      "issue": "肥大化による可読性低下",
+      "target": "150 lines以内に削減"
+    },
+    "type_definitions": {
+      "path": "types/index.ts", 
+      "lines": "396",
+      "note": "全型定義の統一管理"
+    },
+    "key_components": {
+      "MainCanvas.tsx": "中央キャンバス (379 lines) - 分割必要",
+      "SystemDiagramFlow.tsx": "React Flow統合",
+      "PartsManagement.tsx": "部品管理UI + 互換性チェッカー",
+      "CompatibilityResultModal.tsx": "互換性分析結果表示 (187 lines)",
+      "ChatPanel.tsx": "AI チャット",
+      "Sidebar.tsx": "PBS サイドバー"
+    },
+    "custom_hooks": {
+      "useProjectManagement.ts": "プロジェクト・保存",
+      "useCanvasManagement.ts": "キャンバス・接続", 
+      "usePBSManagement.ts": "PBS構造",
+      "useChatManagement.ts": "チャット状態",
+      "useUIState.ts": "UI表示状態",
+      "useLLMState.ts": "AI処理状態",
+      "useHistoryManager.ts": "Undo/Redo"
+    },
+    "utils": {
+      "projectUtils.ts": "プロジェクト永続化 (371 lines)",
+      "partsAnalysis.ts": "AI部品解析",
+      "compatibilityChecker.ts": "互換性分析エンジン (428 lines) - 大幅肥大化、分割必須",
+      "testCompatibility.ts": "互換性テストユーティリティ (106 lines)",
+      "nodeOperations.ts": "ノード操作",
+      "pbsOperations.ts": "PBS操作",
+      "dataUtils.ts": "データ変換"
+    }
+  },
+  
+  "data_structures": {
+    "CanvasNode": {
+      "description": "統合部品情報（旧partOrdersから移行済み）",
+      "critical_fields": [
+        "id: string",
+        "title: string", 
+        "x: number, y: number",
+        "type: 'primary' | 'secondary' | 'warning' | 'accent'",
+        "inputs: number, outputs: number",
+        "modelNumber?: string",
+        "description?: string", 
+        "orderStatus?: 'Unordered' | 'Quotation' | 'Ordered' | 'Delivered'",
+        "quantity?: number",
+        "voltage?: string",
+        "communication?: string",
+        "compatibilityCheck?: CompatibilityResult"
+      ]
+    },
+    "Connection": {
+      "description": "部品間接続情報",
+      "fields": [
+        "id: string",
+        "fromId: string, toId: string",
+        "fromPort: string, toPort: string"
+      ]
+    },
+    "PBSNode": {
+      "description": "Product Breakdown Structure階層構造",
+      "fields": [
+        "id: string, name: string",
+        "type: 'folder' | 'component' | 'system'",
+        "icon: string",
+        "children?: PBSNode[]",
+        "partInfo?: PartInfo"
+      ]
+    }
+  },
+  
+  "database_design": {
+    "approach": "統合テーブル設計",
+    "main_table": "projects",
+    "data_format": "JSONB型で柔軟性確保",
+    "principle": "過度な正規化を避ける"
+  },
+  
+  "intelligent_matching_system": {
+    "implementation_status": "完了 - 2025年1月11日",
+    "location": "utils/connectionMatching.ts",
+    "features": {
+      "multilingual_support": "英語入力対応",
+      "hardware_patterns": "8カテゴリ×200+パターン",
+      "category_detection": "O(n)アルゴリズム",
+      "score_based_matching": "カテゴリ(10pt) + 仕様(5pt) + 文字(1pt)",
+      "backward_compatibility": "既存39個マッピング保持"
+    },
+    "categories": [
+      "power", "controller", "motor", "sensor", 
+      "communication", "cable", "mechanical", "display"
+    ],
+    "matching_algorithm": "6段階: Legacy→Exact→Category→Partial→Keyword→Fuzzy"
+  },
+  
+  "compatibility_checker_system": {
+    "implementation_status": "完了 - 2025年1月13日",
+    "location": "utils/compatibilityChecker.ts",
+    "features": {
+      "voltage_analysis": "5V vs 3.3V 自動検出",
+      "communication_check": "I2C, SPI, UART, WiFi, Bluetooth 対応確認",
+      "power_calculation": "消費電力 vs 供給能力の自動計算",
+      "severity_classification": "Critical/Warning/Info 3段階分類",
+      "modal_ui": "スクロール対応の美しいモーダル表示"
+    },
+    "analysis_types": [
+      "voltage_mismatch", "communication_incompatible", 
+      "power_insufficient", "physical_constraint"
+    ],
+    "algorithm_complexity": "O(n²) - 全部品間の相互チェック",
+    "ui_component": "CompatibilityResultModal.tsx (181 lines)",
+    "test_utilities": "testCompatibility.ts + test-compatibility.js"
+  },
+  
+  "common_errors": {
+    "partOrders_reference": {
+      "error": "Expected 15 arguments, but got 16",
+      "cause": "削除済みpartOrders参照",
+      "solution": "パラメータからpartOrders削除"
+    },
+    "infinite_rerender": {
+      "error": "無限再レンダリング",
+      "cause": "useEffect依存配列の設定ミス",
+      "solution": "依存配列を .length のみに限定"
+    },
+    "typescript_mismatch": {
+      "error": "Property 'partOrders' does not exist",
+      "cause": "削除済みinterface参照",
+      "solution": "型定義を最新に更新"
+    },
+    "connection_matching_fails": {
+      "error": "AI接続が失敗してFailedConnectionになる",
+      "cause": "AI生成名と実際部品名の不一致",
+      "solution": "インテリジェントマッチングシステム使用"
+    },
+    "compatibility_check_fails": {
+      "error": "互換性チェックが動作しない",
+      "cause": "部品のvoltage/communication情報が未入力",
+      "solution": "必須フィールドの完全入力を確認"
+    },
+    "modal_scroll_issue": {
+      "error": "互換性結果が見切れる",
+      "cause": "モーダル内容が画面サイズを超過",
+      "solution": "モーダル内の overflow-y-auto でスクロール対応済み"
+    }
+  },
+  
+  "debugging_commands": {
+    "database": [
+      "npm run db:studio",
+      "GET /api/debug/check-db",
+      "GET /api/debug/project-data"
+    ],
+    "development": [
+      "npm run dev",
+      "npm run build", 
+      "npm run lint"
+    ],
+    "database_operations": [
+      "npm run db:migrate",
+      "npm run db:push",
+      "npm run db:setup"
+    ]
+  },
+  
+  "future_roadmap": {
+    "Phase 3.5": {
+      "name": "互換性チェッカー拡張",
+      "priority": "中",
+      "features": "代替部品提案、接続情報考慮、物理制約チェック",
+      "status": "Phase 1完了、Phase 2計画中"
+    },
+    "Phase 4": {
+      "name": "音声インターフェース",
+      "priority": "高",
+      "tech": "Web Speech API, SpeechRecognition API",
+      "purpose": "hands-free操作対応"
+    },
+    "Phase 5": {
+      "name": "チーム協業機能", 
+      "priority": "高",
+      "tech": "Socket.io, Operational Transform",
+      "features": "管理者・編集者・閲覧者権限"
+    },
+    "Phase 6": {
+      "name": "データImport/Export",
+      "priority": "中",
+      "formats": ".aya.json, Eagle CAD, KiCad, CSV",
+      "purpose": "チーム間設定共有"
+    },
+    "Phase 7": {
+      "name": "マルチプロジェクト機能",
+      "priority": "中", 
+      "features": "プロジェクト一覧、テンプレート機能"
+    },
+    "Phase 8": {
+      "name": "役割別UI適応",
+      "priority": "高",
+      "roles": "エンジニア・マーケター・技術営業",
+      "purpose": "簡単UI提供"
+    },
+    "Phase 9": {
+      "name": "ビジュアルAI統合",
+      "priority": "高",
+      "tech": "GPT-4 Vision, WebRTC, カメラ統合",
+      "purpose": "映像からのハードウェア認識"
+    }
+  },
+  
+  "checklist": {
+    "before_editing": [
+      "現在Phase (3: 統合完了 + 自動保存実装済み + 互換性チェッカーシステム実装) 確認",
+      "partOrders削除済み確認", 
+      "型定義 (/types/index.ts) 確認",
+      "app/page.tsx行数確認 (800+ lines)",
+      "ファイル分割必要性検討"
+    ],
+    "during_implementation": [
+      "TypeScript型安全性維持",
+      "自動保存システム考慮",
+      "互換性チェッカー機能考慮",
+      "1ファイル200行以内維持",
+      "シンプルなアルゴリズム採用",
+      "根本原因の特定・修正"
+    ],
+    "after_implementation": [
+      "npm run build 成功確認",
+      "npm run lint 成功確認", 
+      "主要機能動作テスト",
+      "自動保存システム動作確認",
+      "互換性チェッカー動作確認",
+      "不要コードの削除・整理"
+    ],
+    "user_communication": [
+      "現在の問題を具体的に説明",
+      "根本原因の特定結果を共有",
+      "解決方法の詳細を説明", 
+      "影響範囲の明確化",
+      "具体的なテスト方法を提示",
+      "専門用語に平易な説明を併記"
+    ]
+  }
+}
