@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-srv-captain--aya
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    uses: cancelei-org/flukebase/.github/workflows/reusable-build.yml@main
+    permissions:
+      contents: read
+      packages: write
+
+  deploy:
+    needs: build
+    uses: cancelei-org/flukebase/.github/workflows/reusable-deploy.yml@main
+    with:
+      app_name: srv-captain--aya
+      image: ${{ needs.build.outputs.image }}
+      published_port: 0
+      container_port: 3000
+      memory_limit: "512M"
+      memory_reserve: "256M"
+      env_vars: '{}'
+    secrets:
+      VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+      GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      EXTRA_ENV_SECRETS: ${{ secrets.DEPLOY_ENV_SECRETS }}
