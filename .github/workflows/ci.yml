@@ -11,9 +11,13 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   lint-build:
-    name: Lint & Build
+    name: Lint and Build
     runs-on: [self-hosted, linux]
     timeout-minutes: 15
     steps:
@@ -38,25 +42,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-  docker:
-    name: Docker Build
-    needs: [lint-build]
-    if: github.event_name == 'push'
-    uses: cancelei-org/flukebase/.github/workflows/reusable-build.yml@main
-    permissions:
-      contents: read
-      packages: write
-
-  notify:
-    name: CI Notify
-    needs: [lint-build, docker]
-    if: always()
-    uses: cancelei-org/flukebase/.github/workflows/reusable-ci-notify.yml@main
-    with:
-      project_slug: "aya"
-      job_results: |
-        Lint & Build=${{ needs.lint-build.result }}
-        Docker=${{ needs.docker.result }}
-    secrets:
-      MCP_AUTH_TOKEN: ${{ secrets.MCP_AUTH_TOKEN }}
