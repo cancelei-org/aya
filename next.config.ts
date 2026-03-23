@@ -43,8 +43,6 @@ const nextConfig: NextConfig = {
   compress: true,
   // Optimize production builds
   productionBrowserSourceMaps: false,
-  // Minimize bundle size
-  swcMinify: true,
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // Don't resolve Node.js modules on the client side

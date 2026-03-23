@@ -41,4 +41,8 @@ jobs:
         run: npm run lint
 
       - name: Build
+        env:
+          # Dummy DATABASE_URL so Prisma client can initialize during
+          # Next.js static page collection without a real database
+          DATABASE_URL: "postgresql://user:pass@localhost:5432/aya_build"
         run: npm run build

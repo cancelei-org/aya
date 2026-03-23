@@ -35,6 +35,9 @@ COPY . .
 # Set build-time environment variables
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
+# Dummy DATABASE_URL so Prisma client can initialize during Next.js
+# static page collection without a real database connection
+ENV DATABASE_URL="postgresql://user:pass@localhost:5432/aya_build"
 
 # Build Next.js application with standalone output
 RUN npm run build
