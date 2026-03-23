@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // Required for Docker deployments — produces a standalone server bundle
+  output: 'standalone',
   eslint: {
     // ⚠️ 一時的にESLintエラーを無視してビルドを通す
     // TODO: 後で型エラーを修正してfalseに戻す
