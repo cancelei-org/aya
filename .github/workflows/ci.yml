@@ -42,7 +42,14 @@ jobs:
 
       - name: Build
         env:
-          # Dummy DATABASE_URL so Prisma client can initialize during
-          # Next.js static page collection without a real database
+          # Dummy env vars so clients can initialize during Next.js
+          # static page collection without real credentials
           DATABASE_URL: "postgresql://user:pass@localhost:5432/aya_build"
+          OPENAI_API_KEY: "sk-dummy-build-key"
+          ANTHROPIC_API_KEY: "sk-ant-dummy-build-key"
+          NEXTAUTH_SECRET: "dummy-build-secret"
+          NEXTAUTH_URL: "http://localhost:3000"
+          PERPLEXITY_API_KEY: "dummy"
+          GOOGLE_API_KEY: "dummy"
+          GOOGLE_SEARCH_ENGINE_ID: "dummy"
         run: npm run build

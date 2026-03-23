@@ -35,9 +35,16 @@ COPY . .
 # Set build-time environment variables
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
-# Dummy DATABASE_URL so Prisma client can initialize during Next.js
-# static page collection without a real database connection
+# Dummy env vars so clients can initialize during Next.js static page
+# collection without real credentials (overridden at runtime)
 ENV DATABASE_URL="postgresql://user:pass@localhost:5432/aya_build"
+ENV OPENAI_API_KEY="sk-dummy-build-key"
+ENV ANTHROPIC_API_KEY="sk-ant-dummy-build-key"
+ENV NEXTAUTH_SECRET="dummy-build-secret"
+ENV NEXTAUTH_URL="http://localhost:3000"
+ENV PERPLEXITY_API_KEY="dummy"
+ENV GOOGLE_API_KEY="dummy"
+ENV GOOGLE_SEARCH_ENGINE_ID="dummy"
 
 # Build Next.js application with standalone output
 RUN npm run build
