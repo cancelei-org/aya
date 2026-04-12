@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // Required for Docker deployments — produces a standalone server bundle
+  output: 'standalone',
   eslint: {
     // ⚠️ 一時的にESLintエラーを無視してビルドを通す
     // TODO: 後で型エラーを修正してfalseに戻す
@@ -41,8 +43,6 @@ const nextConfig: NextConfig = {
   compress: true,
   // Optimize production builds
   productionBrowserSourceMaps: false,
-  // Minimize bundle size
-  swcMinify: true,
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // Don't resolve Node.js modules on the client side

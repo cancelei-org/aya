@@ -1,4 +1,4 @@
-name: Notify Discord with embed
+name: Notify Discord
 
 on:
   push:
@@ -7,19 +7,28 @@ on:
 
 jobs:
   discord-notify:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
+    # Only run if Discord webhook is configured
+    if: ${{ vars.DISCORD_NOTIFICATIONS_ENABLED == 'true' }}
+    timeout-minutes: 2
 
     steps:
       - name: Send embed notification to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
-          curl -H "Content-Type: application/json" \
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "::warning::DISCORD_WEBHOOK_URL secret is not set, skipping notification"
+            exit 0
+          fi
+          curl -sf -H "Content-Type: application/json" \
                -X POST \
                -d '{
                  "embeds": [{
-                   "title": "🚀 New Push to Main",
-                   "description": "Repository: `${{ github.repository }}`\nPushed by: `${{ github.actor }}`",
+                   "title": "New Push to Main",
+                   "description": "Repository: `'"${{ github.repository }}"'`\nPushed by: `'"${{ github.actor }}"'`\nCommit: `'"${{ github.sha }}"'`",
                    "color": 5814783,
-                   "timestamp": "'$(date --utc +%Y-%m-%dT%H:%M:%SZ)'"
+                   "timestamp": "'"$(date --utc +%Y-%m-%dT%H:%M:%SZ)"'"
                  }]
                }' \
-               ${{ secrets.DISCORD_WEBHOOK_URL }}
+               "$DISCORD_WEBHOOK_URL"
