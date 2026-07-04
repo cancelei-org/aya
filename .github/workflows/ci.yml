@@ -53,3 +53,15 @@ jobs:
           GOOGLE_API_KEY: "dummy"
           GOOGLE_SEARCH_ENGINE_ID: "dummy"
         run: npm run build
+
+  notify:
+    needs: [lint-build]
+    if: always()
+    uses: cancelei-org/flukebase/.github/workflows/reusable-ci-notify.yml@main
+    with:
+      project_slug: "aya"
+      job_results: |
+        Lint and Build=${{ needs.lint-build.result }}
+    secrets:
+      # Org-level secret (visibility: all) — resolves in this caller context.
+      MCP_AUTH_TOKEN: ${{ secrets.MCP_AUTH_TOKEN }}
