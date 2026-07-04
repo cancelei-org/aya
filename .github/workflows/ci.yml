@@ -54,14 +54,56 @@ jobs:
           GOOGLE_SEARCH_ENGINE_ID: "dummy"
         run: npm run build
 
+  # aya is a PUBLIC repo and flukebase is private — GitHub does not allow
+  # public repos to call reusable workflows from private repos, so the
+  # standard reusable-ci-notify call is inlined here (same pattern, best
+  # effort: reporting can never fail the build).
   notify:
+    name: Report CI Events
     needs: [lint-build]
     if: always()
-    uses: cancelei-org/flukebase/.github/workflows/reusable-ci-notify.yml@main
-    with:
-      project_slug: "aya"
-      job_results: |
-        Lint and Build=${{ needs.lint-build.result }}
-    secrets:
-      # Org-level secret (visibility: all) — resolves in this caller context.
-      MCP_AUTH_TOKEN: ${{ secrets.MCP_AUTH_TOKEN }}
+    runs-on: [self-hosted, linux]
+    timeout-minutes: 2
+    steps:
+      - name: Report CI events to FlukeBase
+        env:
+          MCP_AUTH_TOKEN: ${{ secrets.MCP_AUTH_TOKEN }}
+          HOOK_URL: "https://mcp.flukebase.me/hooks/ci-event"
+          COMMIT_MSG: ${{ github.event.head_commit.message || '' }}
+          JOB_RESULT: ${{ needs.lint-build.result }}
+        shell: bash {0}
+        run: |
+          if [ -z "$MCP_AUTH_TOKEN" ]; then
+            echo "::warning::MCP_AUTH_TOKEN is empty (dependabot or fork PR — secrets withheld). Skipping CI event reporting."
+            exit 0
+          fi
+          COMMIT_FIRST_LINE=$(printf '%s' "$COMMIT_MSG" | head -1)
+          COMMIT_FIRST_LINE=${COMMIT_FIRST_LINE:0:200}
+          COMMIT_ESCAPED=${COMMIT_FIRST_LINE//\\/\\\\}
+          COMMIT_ESCAPED=${COMMIT_ESCAPED//\"/\\\"}
+          COMMIT_ESCAPED=$(printf '%s' "$COMMIT_ESCAPED" | tr -d '\000-\037')
+
+          post_event() {
+            local label="$1" payload="$2" code
+            code=$(curl -s -o /tmp/ci_notify_resp --max-time 5 -w "%{http_code}" -X POST "$HOOK_URL" \
+              -H "Authorization: Bearer $MCP_AUTH_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "$payload" 2>/dev/null)
+            case "$code" in
+              2??) echo "  -> $label: HTTP $code" ;;
+              *)   echo "::warning::$label: HTTP $code (body: $(head -c 200 /tmp/ci_notify_resp 2>/dev/null))" ;;
+            esac
+            return 0
+          }
+
+          BASE="\"project_slug\": \"aya\", \"workflow_name\": \"CI\", \"workflow_run_id\": ${{ github.run_id }}, \"branch\": \"${{ github.ref_name }}\", \"commit_sha\": \"${{ github.sha }}\", \"commit_message\": \"${COMMIT_ESCAPED}\", \"triggered_by\": \"${{ github.actor }}\", \"event_trigger\": \"${{ github.event_name }}\", \"html_url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\""
+
+          post_event "Lint and Build=$JOB_RESULT" \
+            "{ $BASE, \"event_type\": \"job_complete\", \"job_name\": \"Lint and Build\", \"status\": \"$JOB_RESULT\" }"
+
+          WF_STATUS="success"
+          [ "$JOB_RESULT" = "failure" ] && WF_STATUS="failure"
+          [ "$JOB_RESULT" = "cancelled" ] && WF_STATUS="cancelled"
+          post_event "workflow=$WF_STATUS" \
+            "{ $BASE, \"event_type\": \"workflow_complete\", \"status\": \"$WF_STATUS\" }"
+          exit 0
